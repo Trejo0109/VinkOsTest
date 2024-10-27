@@ -56,6 +56,8 @@ composer install
 php artisan migrate
 ```
 
+***Recuerda poner tus credenciales de la base de datos en el archivo .env***
+
 ## Proceso
 
 En esta seccion se detalla y se explica el proceso para la resolucion del problema.
