@@ -56,7 +56,7 @@ Se creo una clase ubicada en:
 Que se encarga de encapsular los metodos que se utilizaron para procesar los archivos uno por uno.
 
 ### Mapeo de datos
-En la clase **App\Services\IntegrateService** se creo un metodo privado que mapea los registros a un arreglo asociativo, asignando como nombre de las claves el nombre del campo en el que se guardara el valor en la base de datos.
+En la clase **App\Services\IntegrateService**::mapData($array) se creo un metodo privado que mapea los registros a un arreglo asociativo, asignando como nombre de las claves el nombre del campo en el que se guardara el valor en la base de datos.
 
 ### Validaciones
 Se creo una clase ubicada en 
