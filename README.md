@@ -46,7 +46,7 @@ El objetivo del test, es detallar el flujo del proceso a construir, es decir, d�
 Los archivos de ejemplo se encuentran en la carpeta denominada “txt”.
 
 
-##Instalacion 
+## Instalacion 
 
 **Para fines del examen se subieron al repositorio los archivos .env y la carpeta storage**
 
