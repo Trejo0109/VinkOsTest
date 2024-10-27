@@ -112,7 +112,12 @@ Se creo un metodo en:
 Que se encarga de comprimir os archivos que se respaldaron, este zip se guarda con la fecha del dia en la que se hizo el respaldo (Ymd)
 
 ### Test
-Para 
+Para hacer pruebas locales se creo un test unitario, que toma los archivos que se incluyeron en la carpeta de drive, este test dse puede correr con: 
+```
+php artisan test
+```
+
+***Asegurate de guardar los archivos que quieres testear en storage/app/vinkOs/archivosVisitas***
 
 
 ## Instalacion 
