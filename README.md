@@ -83,6 +83,7 @@ Que contiene los metodos para validar el **Layout** de los archivos y los **regi
 
 ### Guardado de Datos
 *Esta seccion se hizo haciendo el menor numero de consultas posibles a la base de datos para mejorar el tiempo de ejecucion del proceso*
+
 Para esta parte se hizo una capa intermedia entre el proceso y la base de datos, estas capas intermedias se encuentran en: 
 - App\Repositories\StatisticsRepository
 
