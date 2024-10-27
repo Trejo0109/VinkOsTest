@@ -64,6 +64,8 @@ Se creo una clase ubicada en
 
 Que contiene los metodos para validar el **Layout** de los archivos y los **registros** que se van a guardar en la base de datos. Estas validaciones fueron:
 - Layout: Se valido que las cabeceras del archivo coincidan con las cabeceras requeridas en la prueba.
+
+-- fg
 - Registros: Se valido que el email fuera un email valido y que el formato de las fechas coincidiera con el solicitado.
 
 *Para esta prueba los registros de fecha que son iguales a '-' los tome como un formato invalido, en el caso de que se quisiera tomar estos valores como nulos solo se debe agregar la validacion nullable en los campos que lo requiera*
