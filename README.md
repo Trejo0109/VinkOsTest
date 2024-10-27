@@ -54,9 +54,9 @@ Clonar el proyecto de Git y ejecutar los siguientes comandos
 
 ```bash
 composer install
-php artisan migrate
+php artisan migrate```
 
-##Proceso
+## Proceso
 
 Enta seccion se detalla y se explica el proceso para la resolucion del problema
 
