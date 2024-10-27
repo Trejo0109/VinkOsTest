@@ -96,7 +96,7 @@ Esta clase se encarga de insertar los registros en la tabla de visitantes y en e
 De igual forma se encapsulo la logica de negocios para las inserciones en la base de datos
 - App\Services\StatisticsService
 
-Constiene el metodo para darle formato a las fechas ya que el formato en mysql para los campos datetime es Y-m-d H:m:s
+Constiene el metodo para darle formato a las fechas ya que el formato en mysql para los campos datetime es Y-m-d H:m:s, se pudieron guardar las fechas como string, pero en el caso de que se requiera hacer busquedas u operaciones en bd sobre fechas estas se entorpecerian
 
 - App\Services\VisitorRepository
 
