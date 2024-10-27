@@ -86,7 +86,33 @@ Constiene el metodo para darle formato a las fechas ya que el formato en mysql p
 
 - App\Services\VisitorRepository
 
-Constiene los metodos para mapear el registro e insertarlo y en el caso de que el registro con el correo ya exista calcular los campos de ultima visita(fecha envio) y visitasTotales, visitas del mes y año actual (Numero de ocurrencias del correo). *De igual forma se actualizo primer visita usando funciones de min y max para evitar problemas en el caso de que los archivos no se carguen en el orden correcto*
+Constiene los metodos para mapear el registro e insertarlo y en el caso de que el registro con el correo ya exista calcular los campos de ultima visita(fecha envio) y visitasTotales, visitas del mes y año actual (Numero de ocurrencias del correo). *De igual forma se actualizo primer visita usando funciones de min y max para ultima visita evitando problemas en el caso de que los archivos no se carguen en el orden correcto*
+
+### Manejo de errores
+Para almacenar los errores se uso:
+- App\Services\ErrorService
+
+Que contiene los metodos para almacenar los errores en la tabla errores de la bd, esta clase guarda el archivo donde ocurrio el error, el tipo de error (De layout o de registro) y un json con el error, si es un error de registro te especifica la linea o No. de registro que tuvo el error
+
+### Bitacora Mensual
+
+Se penso en una tabla nueva en la base de datos que registra el numero de archivos procesados en el mes, asi como el numero de registros, solo se guarda un registro por mes y este se actualiza si ya existe.
+
+### Backup
+
+Se creo un metodo en:
+- App\Services\IntegrateService
+
+Que se encarga de copiar los archivos al destino y borrarlos del origen, en este caso corta todos los archivos que procesa, aunque estos fallen, si se requiriera se puede separar los archivos procesados correctamente de los que fallaron
+
+### Comprimir Backup
+Se creo un metodo en:
+- App\Services\IntegrateService
+
+Que se encarga de comprimir os archivos que se respaldaron, este zip se guarda con la fecha del dia en la que se hizo el respaldo (Ymd)
+
+### Test
+Para 
 
 
 ## Instalacion 
@@ -95,8 +121,9 @@ Constiene los metodos para mapear el registro e insertarlo y en el caso de que e
 
 Clonar el proyecto de Git y ejecutar los siguientes comandos
 
-```bash
+```
 composer install
 php artisan migrate
+```
 
 
