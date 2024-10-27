@@ -45,6 +45,9 @@ El objetivo del test, es detallar el flujo del proceso a construir, es decir, d�
 
 Los archivos de ejemplo se encuentran en la carpeta denominada “txt”.
 
+## Proceso
+
+Enta seccion se detalla y se explica el proceso para la resolucion del problema
 
 ## Instalacion 
 
@@ -54,10 +57,6 @@ Clonar el proyecto de Git y ejecutar los siguientes comandos
 
 ```bash
 composer install
-php artisan migrate```
-
-## Proceso
-
-Enta seccion se detalla y se explica el proceso para la resolucion del problema
+php artisan migrate
 
 
