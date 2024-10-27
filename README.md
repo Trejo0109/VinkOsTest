@@ -119,6 +119,31 @@ php artisan test
 
 ***Asegurate de guardar los archivos que quieres testear en storage/app/vinkOs/archivosVisitas***
 
+### SFTP
+Para cargar los archivos desde un servidor por medio de sftp se configuro el filsystem.php para que funcione con sftp, ese requiere las variables de entorno:
+- SFTP_HOST=8.8.8.8
+- SFTP_USERNAME=  
+- SFTP_PASSWORD=  
+- SFTP_ROOT=/home
+
+***Asegurate de poner las credencial del servidor para poder acceder por sftp***
+
+### Ejecucion diaria 
+Para esta seccion se creo un comando de artisan: 
+```
+php artisan integrate:visits
+```
+Este comando va a tomar todos los archivos del servidor en el path solicitado y hara el proceso del integracion de datos de visitas.
+
+De igual forma este comando se registro en Routes/commands.php para que se ejecute cada dia a las 23:59, para que esto funcione de forma local se debe tener corriendo el comando.
+```
+php artisan schedule:work
+```
+
+Para que corra en un servidor se debe hacer un archivo bash que ejecute el comando 
+```
+php artisan schedule:run
+```
 
 ## Instalacion 
 
