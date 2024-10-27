@@ -9,25 +9,25 @@ class VisitorService
 {
     public static function format(array $visit)
     {
-        $fechaOpen =  Carbon::createFromFormat('d/m/Y H:i', $visit['fecha_open']);
+        $fechaEnvio =  Carbon::createFromFormat('d/m/Y H:i', $visit['fecha_envio']);
         return [
             'email' => $visit['email'],
-            'fecha_primera_visita' => $fechaOpen,
-            'fecha_ultima_visita' => $fechaOpen,
-            'visitas_totales' => $visit['opens'],
-            'visitas_mes_actual' => $fechaOpen->isCurrentMonth() ? $visit['opens'] : 0,
-            'visitas_anio_actual' => $fechaOpen->isCurrentYear() ? $visit['opens'] : 0,
+            'fecha_primera_visita' => $fechaEnvio,
+            'fecha_ultima_visita' => $fechaEnvio,
+            'visitas_totales' => 1,
+            'visitas_mes_actual' => $fechaEnvio->isCurrentMonth() ? 1 : 0,
+            'visitas_anio_actual' => $fechaEnvio->isCurrentYear() ? 1 : 0,
         ];
     }
 
     public static function logVisit($record, $newVisit)
     {
-        $fechaOpen =  Carbon::createFromFormat('d/m/Y H:i', $newVisit['fecha_open']);
-        $record->fecha_primera_visita = min($record->fecha_primera_visita, $fechaOpen);
-        $record->fecha_ultima_visita = max($record->fecha_ultima_visita, $fechaOpen);
-        $record->visitas_totales +=  $newVisit['opens'];
-        $record->visitas_mes_actual +=  $fechaOpen->isCurrentMonth() ? $newVisit['opens'] : 0;
-        $record->visitas_anio_actual +=  $fechaOpen->isCurrentYear() ? $newVisit['opens'] : 0;
-        return $record->save();
+        $fechaEnvio =  Carbon::createFromFormat('d/m/Y H:i', $newVisit['fecha_envio']);
+        $record->fecha_primera_visita = min($record->fecha_primera_visita, $fechaEnvio);
+        $record->fecha_ultima_visita = max($record->fecha_ultima_visita, $fechaEnvio);
+        $record->visitas_totales +=  1;
+        $record->visitas_mes_actual +=  $fechaEnvio->isCurrentMonth() ? 1 : 0;
+        $record->visitas_anio_actual +=  $fechaEnvio->isCurrentYear() ? 1 : 0;
+        return $record;
     }
 }

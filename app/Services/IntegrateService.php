@@ -16,11 +16,15 @@ class IntegrateService
 
     public static function integrateInformation($files, $disk = 'sftp')
     {
+        $currentDate = Carbon::now()->format('Ymd');
+        $path = 'home/etl/visitas/bckp/' . $currentDate;
+
         foreach ($files as  $file) {
             self::processFile($file, $disk);
-            $path = self::backupFile($file);
-            self::zipBackupFiles($path);
+            self::backupFile($file,$disk, $path);
+            MonthlyLogService::file();
         }
+        self::zipBackupFiles($path);
     }
 
     private static function processFile($file, $disk)
@@ -31,18 +35,18 @@ class IntegrateService
         $headers = str_getcsv(array_shift($lines));
 
         if (!VisitFileValidator::layout($headers)) {
-            Log::error("{$file}: El formato del layout no es el requerido.");
+            ErrorService::layout($file);
             return;
         }
         $data = [];
-        $errors = [];
         foreach ($lines as $key => $line) {
             if (trim($line) === '') continue;
+            MonthlyLogService::record();
             $record = self::mapData(str_getcsv($line));
 
             $validator = VisitFileValidator::visitor($record);
             if ($validator->fails()) {
-                $errors[] = $record;
+                ErrorService::record($file, $validator->errors()->all(),$key);
                 continue;
             }
             $data[] = $record;
@@ -52,15 +56,11 @@ class IntegrateService
         VisitorRepository::getOrInsert($data);
     }
 
-    private static function backupFile(string $file)
+    private static function backupFile(string $file,string $disk, string $path)
     {
-        $currentDate = Carbon::now()->format('Ymd');
-
-        $path = 'home/etl/visitas/bckp/' . $currentDate;
-
         Storage::copy($file, $path . '/' . basename($file));
+        //Storage::disk($disk)->delete($file);
         return $path;
-        // Storage::disk($disk)->delete($file);
     }
 
     protected static function zipBackupFiles($path)

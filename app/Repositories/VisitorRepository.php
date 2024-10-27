@@ -14,6 +14,7 @@ class VisitorRepository
             $record = Visitor::where('email', $visit['email'])->first();
             if ($record) {
                 $record = VisitorService::logVisit($record, $visit);
+                $record->save();
             } else {
                 $visit = VisitorService::format($visit);
                 Visitor::create($visit);
