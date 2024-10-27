@@ -69,8 +69,25 @@ Que contiene los metodos para validar el **Layout** de los archivos y los **regi
 *Para esta prueba los registros de fecha que son iguales a '-' los tome como un formato invalido, en el caso de que se quisiera tomar estos valores como nulos solo se debe agregar la validacion nullable en los campos que lo requiera*
 
 ### Guardado de Datos
-Para esta parte se hizo una capa intermedia entre la proceso y la base de datos, esta capa intermedia se encuentra en 
-- App\Repositories
+*Esta seccion se hizo haciendo el menor numero de consultas posibles a la base de datos para mejorar el tiempo de ejecucion del proceso*
+Para esta parte se hizo una capa intermedia entre el proceso y la base de datos, estas capas intermedias se encuentran en: 
+- App\Repositories\StatisticsRepository
+
+Esta clase se encarga de insertar un arreglo de registros en la tabla estadisticas, se penso en insertar el arreglo de todos los registros en unsa sola consuta para optimizar el tiempo de ejecucion del proceso
+
+- App\Repositories\VisitorRepository
+
+Esta clase se encarga de insertar los registros en la tabla de visitantes y en el caso de que ya exista el correo actualiza el registro
+
+De igual forma se encapsulo la logica de negocios para las inserciones en la base de datos
+- App\Services\StatisticsService
+
+Constiene el metodo para darle formato a las fechas ya que el formato en mysql para los campos datetime es Y-m-d H:m:s
+
+- App\Services\VisitorRepository
+
+Constiene los metodos para mapear el registro e insertarlo y en el caso de que el registro con el correo ya exista calcular los campos de ultima visita(fecha envio) y visitasTotales, visitas del mes y año actual (Numero de ocurrencias del correo). *De igual forma se actualizo primer visita usando funciones de min y max para evitar problemas en el caso de que los archivos no se carguen en el orden correcto*
+
 
 ## Instalacion 
 
