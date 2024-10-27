@@ -45,6 +45,17 @@ El objetivo del test, es detallar el flujo del proceso a construir, es decir, d�
 
 Los archivos de ejemplo se encuentran en la carpeta denominada “txt”.
 
+## Instalacion 
+
+*Para fines del examen se subieron al repositorio los archivos .env y la carpeta storage*
+
+Clonar el proyecto de Git y ejecutar los siguientes comandos
+
+```
+composer install
+php artisan migrate
+```
+
 ## Proceso
 
 En esta seccion se detalla y se explica el proceso para la resolucion del problema.
@@ -145,17 +156,6 @@ Para que corra en un servidor se debe hacer un archivo bash que ejecute el coman
 php artisan schedule:run
 ```
 
-## Instalacion 
 
-*Para fines del examen se subieron al repositorio los archivos .env y la carpeta storage*
-
-Clonar el proyecto de Git y ejecutar los siguientes comandos
-
-```
-composer install
-php artisan migrate
-```
-
-### dsa
 
 
