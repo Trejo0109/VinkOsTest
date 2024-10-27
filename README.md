@@ -47,7 +47,12 @@ Los archivos de ejemplo se encuentran en la carpeta denominada “txt”.
 
 ## Proceso
 
-Enta seccion se detalla y se explica el proceso para la resolucion del problema
+Enta seccion se detalla y se explica el proceso para la resolucion del problema.
+
+### Procesar información
+Se creo una clase ubicada en: 
+- App\Services
+Que se encarga de encapsular los metodos que se utilizaron para procesar los archivos uno por uno 
 
 ## Instalacion 
 
