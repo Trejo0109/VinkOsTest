@@ -59,7 +59,7 @@ class IntegrateService
     private static function backupFile(string $file,string $disk, string $path)
     {
         Storage::copy($file, $path . '/' . basename($file));
-        //Storage::disk($disk)->delete($file);
+        Storage::disk($disk)->delete($file);
         return $path;
     }
 
